@@ -79,7 +79,7 @@ const RelatedRecipes = ({ currentRecipe }) => {
           <span className="mr-2">🍽️</span>
           Recetas Similares
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {[1, 2, 3, 4].map((item) => (
             <div key={item} className="bg-white rounded-2xl p-4 shadow-md">
               <div className="bg-gray-200 h-40 rounded-xl mb-4 animate-pulse"></div>
@@ -112,7 +112,7 @@ const RelatedRecipes = ({ currentRecipe }) => {
         <span className="mr-2">🍽️</span>
         Recetas Similares
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
         {relatedRecipes.map((recipe) => (
           <div
             key={recipe.idMeal}
