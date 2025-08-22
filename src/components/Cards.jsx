@@ -191,8 +191,8 @@ export default function Cards({
         </div>
 
         {/* Grid de Cards */}
-        <div className="grid grid-cols-1 gap-x-6 gap-y-10 mt-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {currentMeals.slice(0, 12).map((meal) => {
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 mt-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+          {currentMeals.slice(0, 8).map((meal) => {
             const ingredientCount = countIngredients(meal);
             const difficulty = estimateDifficulty(meal.strInstructions);
 
