@@ -132,7 +132,7 @@ export default function Cards({
 
           {/* PAGINACIÓN*/}
           {totalPages > 1 && (
-            <div className="flex justify-center items-center mt-12 space-x-4">
+            <div className="flex justify-center items-center md:mt-12 space-x-4">
               {/* Botón Anterior */}
               <button
                 onClick={() => onPageChange(currentPage - 1)}
