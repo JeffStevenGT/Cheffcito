@@ -21,7 +21,7 @@ const Carrusell = ({ setSelectedCategory, resetFilters }) => {
 
     const carousel = carouselRef.current;
     let animationFrameId;
-    let autoScrollSpeed = 0.5;
+    let autoScrollSpeed = 0.2;
 
     const animateScroll = () => {
       if (carousel) {
