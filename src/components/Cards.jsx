@@ -130,6 +130,60 @@ export default function Cards({
               "Todas las Recetas"}
           </h2>
 
+          {/* PAGINACIÓN*/}
+          {totalPages > 1 && (
+            <div className="flex justify-center items-center mt-12 space-x-4">
+              {/* Botón Anterior */}
+              <button
+                onClick={() => onPageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors flex items-center"
+              >
+                <svg
+                  className="w-4 h-4 mr-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+                Anterior
+              </button>
+
+              {/* Información de página */}
+              <span className="text-xs md:text-xs text-gray-600 bg-gray-100 px-3 py-2 rounded-lg">
+                Página {currentPage} de {totalPages}
+              </span>
+
+              {/* Botón Siguiente */}
+              <button
+                onClick={() => onPageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors flex items-center"
+              >
+                Siguiente
+                <svg
+                  className="w-4 h-4 ml-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
+          )}
+
           <div className="text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
             Página {currentPage} de {totalPages} • {currentMeals.length} de{" "}
             {totalMeals} recetas

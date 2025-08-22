@@ -61,7 +61,7 @@ export default function Hero() {
 
           {/* Overlay con texto */}
           <div className="absolute inset-0 bg-black/40">
-            <div className="mx-auto max-w-2xl py-16 sm:py-20 lg:py-24 text-center text-white px-6">
+            <div className="mx-auto max-w-2xl pt-22 py-16 sm:py-20 lg:py-24 text-center text-white px-6">
               <h1 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
                 {meal.strMeal}
               </h1>
