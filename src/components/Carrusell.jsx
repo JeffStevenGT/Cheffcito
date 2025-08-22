@@ -76,6 +76,24 @@ const Carrusell = ({ setSelectedCategory, resetFilters }) => {
     carouselRef.current.scrollLeft = scrollLeft - walk;
   };
 
+  // Manejar eventos táctiles para dispositivos móviles
+  const handleTouchStart = (e) => {
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX - carouselRef.current.offsetLeft);
+    setScrollLeft(carouselRef.current.scrollLeft);
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging) return;
+    const x = e.touches[0].pageX - carouselRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    carouselRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
   const handleCategoryClick = (categoryName) => {
     resetFilters();
     setSelectedCategory(categoryName);
@@ -93,8 +111,8 @@ const Carrusell = ({ setSelectedCategory, resetFilters }) => {
 
   if (error) {
     return (
-      <div className="w-full px-4 pt-8 bg-gray-50">
-        <h2 className="text-2xl font-bold text-start my-6 pl-15 text-gray-800">
+      <div className="w-full px-4 pt-6 md:pt-8 bg-gray-50">
+        <h2 className="text-xl md:text-2xl font-bold text-start my-4 md:my-6 pl-4 md:pl-15 text-gray-800">
           Categorías
         </h2>
         <div className="text-center text-red-500">
@@ -106,19 +124,19 @@ const Carrusell = ({ setSelectedCategory, resetFilters }) => {
 
   if (loading) {
     return (
-      <div className="w-full px-4 pt-8 bg-gray-50">
-        <h2 className="text-3xl font-bold my-6 text-start text-gray-800 pl-15">
+      <div className="w-full px-4 pt-6 md:pt-8 bg-gray-50">
+        <h2 className="text-xl md:text-2xl font-bold my-4 md:my-6 text-start text-gray-800 pl-4 md:pl-15">
           Categorías
         </h2>
-        <div className="flex overflow-x-hidden space-x-4 md:space-x-6 py-4 px-2">
+        <div className="flex overflow-x-hidden space-x-3 md:space-x-6 py-4 px-2">
           {[...Array(8)].map((_, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-36 md:w-48 bg-white rounded-lg shadow-md overflow-hidden"
+              className="flex-shrink-0 w-24 md:w-36 lg:w-48 bg-white rounded-lg shadow-md overflow-hidden"
             >
-              <div className="h-28 md:h-40 bg-gray-200 animate-pulse"></div>
-              <div className="p-3 md:p-4">
-                <div className="h-5 md:h-6 bg-gray-200 rounded animate-pulse"></div>
+              <div className="h-20 md:h-28 lg:h-40 bg-gray-200 animate-pulse"></div>
+              <div className="p-2 md:p-3 lg:p-4">
+                <div className="h-4 md:h-5 lg:h-6 bg-gray-200 rounded animate-pulse"></div>
               </div>
             </div>
           ))}
@@ -129,8 +147,8 @@ const Carrusell = ({ setSelectedCategory, resetFilters }) => {
 
   if (!categories || !Array.isArray(categories) || categories.length === 0) {
     return (
-      <div className="w-full px-4 pt-8 bg-gray-50">
-        <h2 className="text-3xl font-bold  my-6 text-start text-gray-800 pl-15">
+      <div className="w-full px-4 pt-6 md:pt-8 bg-gray-50">
+        <h2 className="text-xl md:text-2xl font-bold my-4 md:my-6 text-start text-gray-800 pl-4 md:pl-15">
           Categorías
         </h2>
         <div className="text-center text-gray-500">
@@ -144,35 +162,38 @@ const Carrusell = ({ setSelectedCategory, resetFilters }) => {
 
   return (
     <div className="w-full bg-gray-50">
-      <h2 className="text-xl md:text-3xl font-bold text-start my-4 md:mb-6 text-gray-800 pl-15">
+      <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-start my-4 md:mb-6 text-gray-800 pl-4 md:pl-15">
         Categorías
       </h2>
 
       <div
         ref={carouselRef}
-        className="flex overflow-x-auto space-x-4 md:space-x-6 py-4 px-2 cursor-grab scrollbar-hide select-none"
+        className="flex overflow-x-auto space-x-3 md:space-x-6 py-4 px-2 cursor-grab scrollbar-hide select-none"
         onMouseDown={handleMouseDown}
         onMouseLeave={handleMouseLeave}
         onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {duplicatedCategories.map((category, index) => (
           <div
             key={`${category.idCategory}-${index}`}
-            className="flex-shrink-0 w-36 md:w-48 bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-lg select-none cursor-pointer"
+            className="flex-shrink-0 w-24 md:w-36 lg:w-48 bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-lg select-none cursor-pointer"
             onClick={() => handleCategoryClick(category.strCategory)}
           >
-            <div className="h-28 md:h-40 overflow-hidden flex items-center justify-center bg-gray-100">
+            <div className="h-20 md:h-28 lg:h-40 overflow-hidden flex items-center justify-center bg-gray-100">
               <img
                 src={category.strCategoryThumb}
                 alt={category.strCategory}
-                className="max-h-full max-w-full object-contain p-2 select-none"
+                className="max-h-full max-w-full object-contain p-1 md:p-2 select-none"
                 draggable="false"
               />
             </div>
-            <div className="p-3 md:p-4">
-              <h3 className="font-semibold text-sm md:text-lg text-center text-gray-800 select-none">
+            <div className="p-2 md:p-3 lg:p-4">
+              <h3 className="font-semibold text-xs md:text-sm lg:text-lg text-center text-gray-800 select-none">
                 {category.strCategory}
               </h3>
             </div>

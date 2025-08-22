@@ -111,6 +111,24 @@ const CarrusellBanderas = ({ setSelectedArea, resetFilters }) => {
     carouselRef.current.scrollLeft = scrollLeft - walk;
   };
 
+  // Manejar eventos táctiles para dispositivos móviles
+  const handleTouchStart = (e) => {
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX - carouselRef.current.offsetLeft);
+    setScrollLeft(carouselRef.current.scrollLeft);
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging) return;
+    const x = e.touches[0].pageX - carouselRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    carouselRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
   const handleAreaClick = (areaName) => {
     resetFilters();
     setSelectedArea(areaName);
@@ -142,11 +160,11 @@ const CarrusellBanderas = ({ setSelectedArea, resetFilters }) => {
           {[...Array(12)].map((_, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-24 md:w-32 h-32 md:h-40 bg-white rounded-lg shadow-md overflow-hidden"
+              className="flex-shrink-0 w-16 h-20 md:w-32 md:h-40 bg-white rounded-lg shadow-md overflow-hidden"
             >
-              <div className="h-20 md:h-28 bg-gray-200 animate-pulse rounded-full mx-auto mt-3 md:mt-4"></div>
-              <div className="p-2 md:p-3">
-                <div className="h-3 md:h-4 bg-gray-200 rounded animate-pulse mx-auto w-16 md:w-20"></div>
+              <div className="h-12 md:h-28 bg-gray-200 animate-pulse rounded-full mx-auto mt-2 md:mt-4"></div>
+              <div className="p-1 md:p-3">
+                <div className="h-2 md:h-4 bg-gray-200 rounded animate-pulse mx-auto w-10 md:w-20"></div>
               </div>
             </div>
           ))}
@@ -169,14 +187,17 @@ const CarrusellBanderas = ({ setSelectedArea, resetFilters }) => {
   const duplicatedAreas = [...areas, ...areas, ...areas];
 
   return (
-    <div className="w-full bg-gray-50">
+    <div className="w-full bg-gray-50 py-4 md:py-6">
       <div
         ref={carouselRef}
-        className="flex overflow-x-auto space-x-4 md:space-x-6 pb-3 px-2 cursor-grab scrollbar-hide select-none"
+        className="flex overflow-x-auto space-x-3 md:space-x-6 pb-3 px-2 cursor-grab scrollbar-hide select-none"
         onMouseDown={handleMouseDown}
         onMouseLeave={handleMouseLeave}
         onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {duplicatedAreas.map((area, index) => {
@@ -186,10 +207,10 @@ const CarrusellBanderas = ({ setSelectedArea, resetFilters }) => {
           return (
             <div
               key={`${area.strArea}-${index}`}
-              className="flex-shrink-0 w-24 bg-gray-200 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-lg flex flex-col items-center select-none cursor-pointer"
+              className="flex-shrink-0 w-16 md:w-24 bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-lg flex flex-col items-center select-none cursor-pointer"
               onClick={() => handleAreaClick(area.strArea)}
             >
-              <div className="h-15 w-20 md:w-28 overflow-hidden flex items-center justify-center px-2 pt-2">
+              <div className="h-10 w-12 md:w-20 md:h-15 overflow-hidden flex items-center justify-center p-1 md:px-2 md:pt-2">
                 <img
                   src={urlBandera}
                   alt={`Bandera de ${area.strArea}`}

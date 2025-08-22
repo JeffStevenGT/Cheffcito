@@ -66,7 +66,10 @@ export default function Header({ searchPrincipal, setSearchPrincipal }) {
 
         {/* Ocultar ícono de búsqueda en móvil para página de detalle */}
         {!isDetailPage && (
-          <label htmlFor="search-toggle" className="md:hidden cursor-pointer">
+          <label
+            htmlFor="search-toggle"
+            className="md:hidden hidden cursor-pointer"
+          >
             <svg
               className="w-7 h-7 text-white"
               xmlns="http://www.w3.org/2000/svg"
