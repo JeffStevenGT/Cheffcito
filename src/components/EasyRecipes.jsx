@@ -70,7 +70,7 @@ const EasyRecipes = () => {
 
   return (
     <div className="bg-gray-50 pb-12 pt-6  px-4">
-      <div className="px-4 mt-16 md:px-15 md:mb-5 md:mt-1">
+      <div className="px-4 mt-8 md:px-15 md:mb-5 md:mt-1">
         {/* Header de la sección */}
         <div className="text-start mb-8">
           <h2 className="text-3xl font-bold text-gray-800 mb-3">

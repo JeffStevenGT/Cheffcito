@@ -184,10 +184,10 @@ export default function Cards({
             </div>
           )}
 
-          <div className="text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
+          {/* <div className="text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
             Página {currentPage} de {totalPages} • {currentMeals.length} de{" "}
             {totalMeals} recetas
-          </div>
+          </div> */}
         </div>
 
         {/* Grid de Cards */}
