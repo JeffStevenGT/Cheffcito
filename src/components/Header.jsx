@@ -17,7 +17,7 @@ export default function Header({ searchPrincipal, setSearchPrincipal }) {
   return (
     <div>
       <header className="bg-[#83ba67] flex items-center justify-between px-4 py-3 fixed top-0 left-0 w-full z-50">
-        <div className="flex justify-between md:justify-center gap-2 md:gap-4">
+        <div className="flex justify-between md:justify-center">
           {/* Logo clickeable */}
           <div className="cursor-pointer" onClick={handleLogoClick}>
             <img
@@ -27,11 +27,11 @@ export default function Header({ searchPrincipal, setSearchPrincipal }) {
             />
           </div>
 
-          <div className="absolute right-4 md:right-43 md w-16 h-16 md:h-22 md:w-15 top-0 rounded-b-md bg-white flex items-center justify-center shadow-md">
+          <div className="absolute right-4 md:left-43 md:h-22 md:w-15 top-0 rounded-b-md bg-white flex items-center justify-center shadow-xl">
             <img
               src="/images/Diseno_sin_titulo_3d.webp"
               alt="ratón"
-              className="h-auto w-10 object-contain"
+              className="h-auto w-10 object-contain m-2"
             />
           </div>
         </div>
