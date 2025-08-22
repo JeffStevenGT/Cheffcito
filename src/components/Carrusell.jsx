@@ -112,7 +112,7 @@ const Carrusell = ({ setSelectedCategory, resetFilters }) => {
   if (error) {
     return (
       <div className="w-full px-4 pt-6 md:pt-8 bg-gray-50">
-        <h2 className="text-xl md:text-2xl font-bold text-start my-4 md:my-6 pl-4 md:pl-15 text-gray-800">
+        <h2 className="text-3xl font-bold text-start my-4 md:my-6 pl-4 md:pl-15 text-gray-800">
           Categorías
         </h2>
         <div className="text-center text-red-500">
@@ -125,7 +125,7 @@ const Carrusell = ({ setSelectedCategory, resetFilters }) => {
   if (loading) {
     return (
       <div className="w-full px-4 pt-6 md:pt-8 bg-gray-50">
-        <h2 className="text-xl md:text-2xl font-bold my-4 md:my-6 text-start text-gray-800 pl-4 md:pl-15">
+        <h2 className="text-3xl font-bold my-4 md:my-6 text-start text-gray-800 pl-4 md:pl-15">
           Categorías
         </h2>
         <div className="flex overflow-x-hidden space-x-3 md:space-x-6 py-4 px-2">
@@ -148,7 +148,7 @@ const Carrusell = ({ setSelectedCategory, resetFilters }) => {
   if (!categories || !Array.isArray(categories) || categories.length === 0) {
     return (
       <div className="w-full px-4 pt-6 md:pt-8 bg-gray-50">
-        <h2 className="text-xl md:text-2xl font-bold my-4 md:my-6 text-start text-gray-800 pl-4 md:pl-15">
+        <h2 className="text-3xl font-bold my-4 md:my-6 text-start text-gray-800 pl-4 md:pl-15">
           Categorías
         </h2>
         <div className="text-center text-gray-500">
@@ -162,7 +162,7 @@ const Carrusell = ({ setSelectedCategory, resetFilters }) => {
 
   return (
     <div className="w-full bg-gray-50">
-      <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-start my-4 md:mb-6 text-gray-800 pl-4 md:pl-15">
+      <h2 className="text-3xl font-bold text-start my-4 md:mb-6 text-gray-800 pl-4 md:pl-15">
         Categorías
       </h2>
 

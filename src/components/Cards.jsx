@@ -112,7 +112,7 @@ export default function Cards({
 
   return (
     <div id="cards-section" className="bg-white md:pt-20">
-      <div className="px-4 mt-16 md:px-15 md:mb-5 md:mt-1">
+      <div className="px-4 mt-7 md:px-15 md:mb-5 md:mt-1">
         {/* Header con información de paginación */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900">
@@ -259,7 +259,7 @@ export default function Cards({
             </button>
 
             {/* Información de página */}
-            <span className="text-sm text-gray-600 bg-gray-100 px-3 py-2 rounded-lg">
+            <span className="text-xs text-gray-600 bg-gray-100 px-3 py-2 rounded-lg">
               Página {currentPage} de {totalPages}
             </span>
 
